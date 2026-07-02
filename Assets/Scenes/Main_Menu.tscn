@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://be3wu3q165bdq"]
+
+[ext_resource type="FontFile" uid="uid://ddsplkhi3i4yx" path="res://Assets/Fonts/pixel_operator/PixelOperator-Bold.ttf" id="1_nexh6"]
+
+[node name="Control" type="Control" unique_id=1211050428]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1616000827]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1121924082]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1710518221]
+layout_mode = 2
+theme_override_constants/separation = 149
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=194958748]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_nexh6")
+theme_override_font_sizes/font_size = 200
+text = "SillyMart"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1216473801]
+layout_mode = 2
+theme_override_constants/separation = 65
+alignment = 1
+
+[node name="TextureButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1172100956]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureButton2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1065611599]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureButton3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1131042256]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2

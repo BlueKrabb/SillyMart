@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://hx64t230bsry"]
+
+[ext_resource type="FontFile" uid="uid://b76elb8ceo7wk" path="res://Assets/Fonts/pixel_operator/PixelOperator.ttf" id="1_jbeq2"]
+[ext_resource type="FontFile" uid="uid://ddsplkhi3i4yx" path="res://Assets/Fonts/pixel_operator/PixelOperator-Bold.ttf" id="2_frvk5"]
+[ext_resource type="FontFile" uid="uid://bjhtwukmdyncq" path="res://Assets/Fonts/pixel_operator/PixelOperatorMono-Bold.ttf" id="3_kgeiw"]
+[ext_resource type="FontFile" uid="uid://b4eoysutelq7g" path="res://Assets/Fonts/pixel_operator/PixelOperatorMono.ttf" id="4_e3405"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lu1y5"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[node name="Control" type="Control" unique_id=912935157]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=149323745]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=29801152]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/CenterContainer" unique_id=991343146]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lu1y5")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/Panel" unique_id=1280782487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/CenterContainer/Panel/MarginContainer" unique_id=1828797827]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_jbeq2")
+theme_override_fonts/bold_font = ExtResource("2_frvk5")
+theme_override_fonts/bold_italics_font = ExtResource("3_kgeiw")
+theme_override_fonts/italics_font = ExtResource("4_e3405")
+bbcode_enabled = true
+text = "[b] \"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis 
+praesentium voluptatum deleniti atque corrupti quos dolores expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere"
+horizontal_alignment = 1
+vertical_alignment = 1

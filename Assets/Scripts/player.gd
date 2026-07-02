@@ -1,25 +1,48 @@
 extends CharacterBody2D
 
+@export var player_speed = 200  # speed in pixels/sec
+@export var run_speed = 400
+var player_direction: Vector2
+@onready var sprite: AnimatedSprite2D = %Sprite
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var last_player_dir: Vector2 = Vector2.DOWN
 
-
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+func _physics_process(_delta: float) -> void:
+	process_movement()
+	process_anim()
 	move_and_slide()
+
+#player movement
+func process_movement() -> void:
+	player_direction = Input.get_vector("move_left", "move_right","move_up","move_down")
+	
+	#gets called when the player is moving
+	if player_direction != Vector2.ZERO:
+		velocity = player_direction * player_speed
+		last_player_dir = player_direction
+	#called when the player is not moving
+	else:
+		velocity = Vector2.ZERO
+	
+
+func process_anim() -> void:
+	if velocity != Vector2.ZERO:
+		play_animation("walk", last_player_dir)
+	else:
+		play_animation("idle", last_player_dir)
+		
+
+func play_animation(prefix: String, dir: Vector2) -> void:
+	if dir.x > 0: 
+		sprite.flip_h = false
+		sprite.play(prefix + "_side")
+		
+	if dir.x < 0: 
+		sprite.flip_h = true
+		sprite.play(prefix + "_side")
+		
+	elif dir.y < 0: 
+		sprite.play(prefix + "_up") 
+	elif dir.y > 0: 
+		sprite.play(prefix + "_down") 
+		

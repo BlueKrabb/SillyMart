@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd2r01ryvmwe7"
-path="res://.godot/imported/Player.png-db2acdf988f9d7b071ead854f4ace434.ctex"
+uid="uid://c2myeupk4cuhg"
+path="res://.godot/imported/banner.png-a08c808587506403e560b66c531b94e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/Player.png"
-dest_files=["res://.godot/imported/Player.png-db2acdf988f9d7b071ead854f4ace434.ctex"]
+source_file="res://Assets/Fonts/PixelCode-2.2/examples/banner.png"
+dest_files=["res://.godot/imported/banner.png-a08c808587506403e560b66c531b94e2.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd2r01ryvmwe7"
-path="res://.godot/imported/Player.png-db2acdf988f9d7b071ead854f4ace434.ctex"
+uid="uid://d4eino8a1kf1f"
+path="res://.godot/imported/quick_brown_fox.js.png-d952dafc89753b6e4ea6c80bd3133dc5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/Player.png"
-dest_files=["res://.godot/imported/Player.png-db2acdf988f9d7b071ead854f4ace434.ctex"]
+source_file="res://Assets/Fonts/PixelCode-2.2/examples/quick_brown_fox.js.png"
+dest_files=["res://.godot/imported/quick_brown_fox.js.png-d952dafc89753b6e4ea6c80bd3133dc5.ctex"]
 
 [params]
 
