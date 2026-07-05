@@ -69,10 +69,22 @@ audio/channel_defaults={
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ColorPreview/plugin.cfg", "res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray("res://addons/ColorPreview/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/to-do-list/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Assets/DATA/": "orange",
+"res://Assets/Fonts/": "yellow",
+"res://Assets/Scenes/": "green",
+"res://Assets/Scripts/": "teal",
+"res://Assets/Sprites/": "blue",
+"res://addons/": "red"
+}
 
 [input]
 

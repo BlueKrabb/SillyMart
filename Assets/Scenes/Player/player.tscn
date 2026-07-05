@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://ci25kr5lae5d3"]
 
-[ext_resource type="Script" uid="uid://hi0etxkye5ji" path="res://Assets/Scripts/player.gd" id="1_7dd06"]
+[ext_resource type="Script" uid="uid://hi0etxkye5ji" path="res://Assets/Scripts/Player/player.gd" id="1_7dd06"]
 [ext_resource type="Texture2D" uid="uid://bd2r01ryvmwe7" path="res://Assets/Sprites/Player/Player.png" id="2_7dd06"]
+[ext_resource type="Script" uid="uid://c43mnwqgwwvki" path="res://Assets/Scripts/StateMachine/state_machine.gd" id="3_3b2lm"]
+[ext_resource type="Script" uid="uid://1v2h1m1clx5i" path="res://Assets/Scripts/StateMachine/States/Player/idle_state.gd" id="4_wp0h6"]
+[ext_resource type="Script" uid="uid://cr6pdcqvx82od" path="res://Assets/Scripts/StateMachine/States/Player/walk_state.gd" id="5_wp0h6"]
+[ext_resource type="Script" uid="uid://r604igg7df4r" path="res://Assets/Scripts/StateMachine/States/Player/run_state.gd" id="6_wp0h6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jp3cw"]
 atlas = ExtResource("2_7dd06")
@@ -221,8 +225,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxtfy"]
 radius = 16.03122
 
-[node name="Player" type="CharacterBody2D" unique_id=1214073038]
-scale = Vector2(2, 2)
+[node name="Player" type="CharacterBody2D" unique_id=1214073038 groups=["player"]]
+scale = Vector2(3, 3)
 script = ExtResource("1_7dd06")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=776113984]
@@ -235,3 +239,27 @@ autoplay = "idle_down"
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1288208828]
 position = Vector2(0, -18)
 shape = SubResource("CircleShape2D_uxtfy")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1689354208 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_3b2lm")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://c43mnwqgwwvki"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=927399300 node_paths=PackedStringArray("walk_state", "run_state")]
+script = ExtResource("4_wp0h6")
+walk_state = NodePath("../Walk")
+run_state = NodePath("../Run")
+metadata/_custom_type_script = "uid://0guja6ish6xg"
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1271044039 node_paths=PackedStringArray("idle_state", "run_state", "player") groups=["player"]]
+script = ExtResource("5_wp0h6")
+idle_state = NodePath("../Idle")
+run_state = NodePath("../Run")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://0guja6ish6xg"
+
+[node name="Run" type="Node" parent="StateMachine" unique_id=684408524 node_paths=PackedStringArray("walk_state", "idle_state")]
+script = ExtResource("6_wp0h6")
+walk_state = NodePath("../Walk")
+idle_state = NodePath("../Idle")
+metadata/_custom_type_script = "uid://0guja6ish6xg"
