@@ -2,12 +2,11 @@ extends State
 
 @export_category("States")
 @export var idle_state: State
-@export var sprint_state: State 
+@export var walk_state: State 
 
 @export_category("player")
 @export var walk_speed = 100  # speed in pixels/sec
 @export var sprint_speed := 200
-
 
 
 @onready var sprite: AnimatedSprite2D = %Sprite
@@ -15,35 +14,33 @@ extends State
 
 var player_direction: Vector2
 var last_player_dir: Vector2 = Vector2.DOWN
-
 var current_anim: String = ""
 var anim_name: String
 
 
-
 func enter_state() -> void:
-	sprite.speed_scale = 1.0
-	print("walk state")
-	
+	sprite.speed_scale = 2.0
+	print("sprint state entered")
+
 
 func update(_detal: float) -> void:
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	player_direction = input_dir
-	walk_movement(input_dir)
-
+	sprint_movement(input_dir)
 	
 
 func _physics_process(_delta: float) -> void:
 	process_anim()
 	player.move_and_slide()
-
+	#print(player.global_position)
 
 func process_anim() -> void:
+
 	if player.velocity != Vector2.ZERO:
 			play_animation("walk", last_player_dir)
 	else:
+		sprite.speed_scale = 1.0
 		play_animation("idle", last_player_dir)
-
 
 func play_animation(prefix: String, dir: Vector2) -> void:
 
@@ -67,17 +64,16 @@ func play_animation(prefix: String, dir: Vector2) -> void:
 	else:
 		sprite.play(anim_name)
 
-		
-func walk_movement(input_dir : Vector2):
+func sprint_movement(input_dir : Vector2):
 	
 	if input_dir != Vector2.ZERO:
 		
-		if Input.is_action_pressed("sprint"):
-			switch_state.emit(sprint_state)
+		if not Input.is_action_pressed("sprint"):
+			switch_state.emit(walk_state)
 			exit_state()
 			return
-		
-		player.velocity = player_direction * walk_speed
+			
+		player.velocity = player_direction * sprint_speed
 		last_player_dir = player_direction
 	
 	else:

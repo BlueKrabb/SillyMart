@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://ci25kr5lae5d3"]
 
-[ext_resource type="Script" uid="uid://hi0etxkye5ji" path="res://Assets/Scripts/Player/player.gd" id="1_7dd06"]
 [ext_resource type="Texture2D" uid="uid://bd2r01ryvmwe7" path="res://Assets/Sprites/Player/Player.png" id="2_7dd06"]
 [ext_resource type="Script" uid="uid://c43mnwqgwwvki" path="res://Assets/Scripts/StateMachine/state_machine.gd" id="3_3b2lm"]
+[ext_resource type="Script" uid="uid://0ccmudw6yksc" path="res://Assets/Scripts/StateMachine/States/Player/sprint_state.gd" id="4_340hg"]
 [ext_resource type="Script" uid="uid://1v2h1m1clx5i" path="res://Assets/Scripts/StateMachine/States/Player/idle_state.gd" id="4_wp0h6"]
 [ext_resource type="Script" uid="uid://cr6pdcqvx82od" path="res://Assets/Scripts/StateMachine/States/Player/walk_state.gd" id="5_wp0h6"]
-[ext_resource type="Script" uid="uid://r604igg7df4r" path="res://Assets/Scripts/StateMachine/States/Player/run_state.gd" id="6_wp0h6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jp3cw"]
 atlas = ExtResource("2_7dd06")
@@ -225,9 +224,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxtfy"]
 radius = 16.03122
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3b2lm"]
+radius = 41.001354
+
 [node name="Player" type="CharacterBody2D" unique_id=1214073038 groups=["player"]]
 scale = Vector2(3, 3)
-script = ExtResource("1_7dd06")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=776113984]
 unique_name_in_owner = true
@@ -245,21 +246,41 @@ script = ExtResource("3_3b2lm")
 initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://c43mnwqgwwvki"
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=927399300 node_paths=PackedStringArray("walk_state", "run_state")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=927399300 node_paths=PackedStringArray("walk_state", "sprint_state")]
 script = ExtResource("4_wp0h6")
 walk_state = NodePath("../Walk")
-run_state = NodePath("../Run")
+sprint_state = NodePath("../Sprint")
 metadata/_custom_type_script = "uid://0guja6ish6xg"
 
-[node name="Walk" type="Node" parent="StateMachine" unique_id=1271044039 node_paths=PackedStringArray("idle_state", "run_state", "player") groups=["player"]]
-script = ExtResource("5_wp0h6")
+[node name="Sprint" type="Node" parent="StateMachine" unique_id=270233926 node_paths=PackedStringArray("idle_state", "walk_state", "player")]
+script = ExtResource("4_340hg")
 idle_state = NodePath("../Idle")
-run_state = NodePath("../Run")
+walk_state = NodePath("../Walk")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://0guja6ish6xg"
 
-[node name="Run" type="Node" parent="StateMachine" unique_id=684408524 node_paths=PackedStringArray("walk_state", "idle_state")]
-script = ExtResource("6_wp0h6")
-walk_state = NodePath("../Walk")
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1271044039 node_paths=PackedStringArray("idle_state", "sprint_state", "player") groups=["player"]]
+script = ExtResource("5_wp0h6")
 idle_state = NodePath("../Idle")
+sprint_state = NodePath("../Sprint")
+player = NodePath("../..")
 metadata/_custom_type_script = "uid://0guja6ish6xg"
+
+[node name="State_Label" type="Label" parent="." unique_id=841263138]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -18.666666
+offset_top = -81.0
+offset_right = 21.333334
+offset_bottom = -58.0
+grow_horizontal = 2
+text = "pass"
+
+[node name="Interact_Area2D" type="Area2D" parent="." unique_id=1047882224]
+
+[node name="Interact_Collision" type="CollisionShape2D" parent="Interact_Area2D" unique_id=888257826]
+position = Vector2(0, -21)
+shape = SubResource("CircleShape2D_3b2lm")
+debug_color = Color(0.6032404, 0.42500457, 0.8679456, 0.41960785)

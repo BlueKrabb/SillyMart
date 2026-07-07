@@ -1,7 +1,7 @@
 class_name StateMachine 
 extends Node
 
-
+@onready var state_label: Label = %State_Label
 @export var initial_state: State
 
 var active_state: State
@@ -31,7 +31,8 @@ func change_state(new_state: State) -> void:
 		
 	
 	active_state = new_state
-	print("Changed to ", active_state.name)
+	print("change_state ", active_state.name)
+	state_label.text =	"state name " + active_state.name
 	
 	
 	if active_state:
