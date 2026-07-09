@@ -30,6 +30,7 @@ func update(_detal: float) -> void:
 	
 
 func _physics_process(_delta: float) -> void:
+	update(_delta)
 	process_anim()
 	player.move_and_slide()
 	#print(player.global_position)
@@ -65,14 +66,13 @@ func play_animation(prefix: String, dir: Vector2) -> void:
 		sprite.play(anim_name)
 
 func sprint_movement(input_dir : Vector2):
-	
 	if input_dir != Vector2.ZERO:
 		
 		if not Input.is_action_pressed("sprint"):
 			switch_state.emit(walk_state)
+			current_anim = ""
 			exit_state()
-			return
-			
+
 		player.velocity = player_direction * sprint_speed
 		last_player_dir = player_direction
 	
