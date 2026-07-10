@@ -5,8 +5,7 @@ extends State
 @export var sprint_state: State 
 
 @export_category("player")
-@export var walk_speed = 100  # speed in pixels/sec
-@export var sprint_speed = 200
+@export var walk_speed = int(100)  # speed in pixels/sec
 
 
 @onready var sprite: AnimatedSprite2D = %Sprite
@@ -19,6 +18,7 @@ var anim_name: String
 
 
 func enter_state() -> void:
+	#make animation speed 1.0
 	sprite.speed_scale = 1.0
 
 
@@ -33,28 +33,23 @@ func update(_detal: float) -> void:
 	player_direction = input_dir
 	walk_movement(input_dir)
 	
-#-----animtions--------
+#-----animtions-------------
 func process_anim() -> void:
 	if player.velocity != Vector2.ZERO:
-		#if Input.is_action_pressed("sprint"):
-			#play_animation("walk", last_player_dir)
-			#sprite.speed_scale = 2.0
-
 			play_animation("walk", last_player_dir)
-			sprite.speed_scale = 1.0
 	else:
-		sprite.speed_scale = 1.0
-		play_animation("idle", last_player_dir)
+		#code will save the last player direction and play the idle animtion to fit it
+		play_animation("idle", last_player_dir)		
 		
 func play_animation(prefix: String, dir: Vector2) -> void:
 
 	if abs(dir.x) >= abs(dir.y):
 		if dir.x > 0: 
-			sprite.flip_h = false
+			sprite.flip_h = false	#not flip player sprite if the player is facing right
 			anim_name = prefix + "_side"
 		elif dir.x < 0: 
-			sprite.flip_h = true
-			anim_name = prefix + "_side"
+			sprite.flip_h = true	#flip player sprite if the player is facing right
+			anim_name = prefix + "_side"	#play animation that has side on it's name
 		
 	else:
 		if dir.y < 0:
@@ -62,19 +57,18 @@ func play_animation(prefix: String, dir: Vector2) -> void:
 		elif dir.y > 0:
 			anim_name = prefix + "_down"
 
-	if current_anim != anim_name:
-		current_anim = anim_name
+	if current_anim != anim_name:	#if the currect animation does not match the aniamtion name
+		current_anim = anim_name	#currect animation is the same as animation name
 		sprite.play(anim_name)
 	else:
 		sprite.play(anim_name)
 
 #--------player walk movement----------
-func walk_movement(input_dir : Vector2):
-	#gets called when the player is moving
-	if player_direction != Vector2.ZERO:
+func walk_movement(input_dir : Vector2):	#this will be called when the player is walking
+	#gets called when the player is walking
+	if player_direction != Vector2.ZERO:	#if the player is walking do this
 		
-		#var current_speed = sprint_speed if Input.is_action_pressed("sprint") else walk_speed
-		if Input.is_action_pressed("sprint"):
+		if Input.is_action_pressed("sprint"):	#if the player is moving and the player presses spint key it will call this
 			switch_state.emit(sprint_state)
 			exit_state()
 			
@@ -84,4 +78,6 @@ func walk_movement(input_dir : Vector2):
 	else:
 		#called when the player is not moving
 		player.velocity = Vector2.ZERO
+		switch_state.emit(idle_state)	#swith to the idle state
+		exit_state()	
 		

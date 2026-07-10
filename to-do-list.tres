@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_2iswm")
 tasks = [Dictionary[String, Variant]({
-"completed": false,
+"completed": true,
 "name": "fix walk"
 }), Dictionary[String, Variant]({
-"completed": false,
+"completed": true,
 "name": "fix sprint direction change"
 })]
