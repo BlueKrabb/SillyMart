@@ -6,7 +6,8 @@ extends State
 
 @export_category("player")
 @export var walk_speed = int(100)  # speed in pixels/sec
-
+@export var run_speed = int(200)
+var current_speed: int
 
 @onready var sprite: AnimatedSprite2D = %Sprite
 @export var player : CharacterBody2D
@@ -36,9 +37,15 @@ func update(_detal: float) -> void:
 #-----animtions-------------
 func process_anim() -> void:
 	if player.velocity != Vector2.ZERO:
+		if Input.is_action_pressed("run"):
+			sprite.speed_scale  = 2.0	#make player aniamtion faster
 			play_animation("walk", last_player_dir)
+		else:
+			sprite.speed_scale  = 1.0
+			play_animation("walk", last_player_dir)	
 	else:
 		#code will save the last player direction and play the idle animtion to fit it
+		sprite.speed_scale  = 1.0
 		play_animation("idle", last_player_dir)		
 		
 func play_animation(prefix: String, dir: Vector2) -> void:
@@ -68,11 +75,9 @@ func walk_movement(input_dir : Vector2):	#this will be called when the player is
 	#gets called when the player is walking
 	if player_direction != Vector2.ZERO:	#if the player is walking do this
 		
-		if Input.is_action_pressed("sprint"):	#if the player is moving and the player presses spint key it will call this
-			switch_state.emit(sprint_state)
-			exit_state()
+		current_speed = run_speed if Input.is_action_pressed("run") else walk_speed
 			
-		player.velocity = player_direction * walk_speed
+		player.velocity = player_direction * current_speed
 		last_player_dir = player_direction
 	
 	else:

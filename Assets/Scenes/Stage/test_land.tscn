@@ -1,8 +1,25 @@
 [gd_scene format=3 uid="uid://blul7bt5fot3x"]
 
 [ext_resource type="PackedScene" uid="uid://ci25kr5lae5d3" path="res://Assets/Scenes/Player/player.tscn" id="1_l3643"]
+[ext_resource type="Texture2D" uid="uid://cimwxuijw73yk" path="res://icon.svg" id="2_x047q"]
 
 [node name="test_land" type="Node2D" unique_id=455992744]
 
 [node name="Player" parent="." unique_id=1214073038 instance=ExtResource("1_l3643")]
 position = Vector2(901.00006, 551)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1155922757]
+position = Vector2(29.49997, -21.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1982605108]
+position = Vector2(410, 296)
+texture = ExtResource("2_x047q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=252511732]
+position = Vector2(1463, 858)
+texture = ExtResource("2_x047q")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=706920445]
+position = Vector2(1463, 186)
+texture = ExtResource("2_x047q")

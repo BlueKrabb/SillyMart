@@ -5,7 +5,9 @@ extends State
 @export var walk_state: State 
 
 @export_category("player")
-@export var sprint_speed := int(200)	# speed in pixels/sec
+@export var sprint_speed = int(200)
+
+
 
 
 @onready var sprite: AnimatedSprite2D = %Sprite
@@ -20,7 +22,16 @@ var anim_name: String
 func enter_state() -> void:
 	sprite.speed_scale = 2.0	#make animations faster when in sprint state
 	print("sprint state entered")	#print in the console that sprint state is entered
+	current_anim = ""
 	#i'm using this for debuging
+
+
+#func exit_state() -> void:
+	#sprite.speed_scale = 1.0	#make animations faster when in sprint state
+	#print("sprint state exited")
+	#current_anim = ""
+		##print in the console that sprint state is entered
+	##i'm using this for debuging
 
 
 func update(_detal: float) -> void:
@@ -71,6 +82,13 @@ func sprint_movement(input_dir : Vector2):
 			switch_state.emit(walk_state)
 			current_anim = ""
 			exit_state()
+			return
+
+		if player_direction == Vector2.ZERO:
+			switch_state.emit(idle_state)
+			exit_state()
+			return
+
 
 		player.velocity = player_direction * sprint_speed
 		last_player_dir = player_direction

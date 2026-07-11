@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bd2r01ryvmwe7" path="res://Assets/Sprites/Player/Player.png" id="2_7dd06"]
 [ext_resource type="Script" uid="uid://c43mnwqgwwvki" path="res://Assets/Scripts/StateMachine/state_machine.gd" id="3_3b2lm"]
-[ext_resource type="Script" uid="uid://0ccmudw6yksc" path="res://Assets/Scripts/StateMachine/States/Player/sprint_state.gd" id="4_340hg"]
+[ext_resource type="Script" uid="uid://0guja6ish6xg" path="res://Assets/Scripts/StateMachine/state.gd" id="4_340hg"]
 [ext_resource type="Script" uid="uid://1v2h1m1clx5i" path="res://Assets/Scripts/StateMachine/States/Player/idle_state.gd" id="4_wp0h6"]
 [ext_resource type="Script" uid="uid://cr6pdcqvx82od" path="res://Assets/Scripts/StateMachine/States/Player/walk_state.gd" id="5_wp0h6"]
 
@@ -228,7 +228,7 @@ radius = 16.03122
 radius = 41.001354
 
 [node name="Player" type="CharacterBody2D" unique_id=1214073038 groups=["player"]]
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=776113984]
 unique_name_in_owner = true
@@ -252,11 +252,8 @@ walk_state = NodePath("../Walk")
 sprint_state = NodePath("../Sprint")
 metadata/_custom_type_script = "uid://0guja6ish6xg"
 
-[node name="Sprint" type="Node" parent="StateMachine" unique_id=270233926 node_paths=PackedStringArray("idle_state", "walk_state", "player")]
+[node name="Sprint" type="Node" parent="StateMachine" unique_id=270233926]
 script = ExtResource("4_340hg")
-idle_state = NodePath("../Idle")
-walk_state = NodePath("../Walk")
-player = NodePath("../..")
 metadata/_custom_type_script = "uid://0guja6ish6xg"
 
 [node name="Walk" type="Node" parent="StateMachine" unique_id=1271044039 node_paths=PackedStringArray("idle_state", "sprint_state", "player") groups=["player"]]
