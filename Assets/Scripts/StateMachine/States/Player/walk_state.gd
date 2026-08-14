@@ -2,7 +2,7 @@ extends State
 
 @export_category("States")
 @export var idle_state: State
-@export var sprint_state: State 
+
 
 @export_category("player")
 @export var walk_speed = int(100)  # speed in pixels/sec
@@ -19,8 +19,7 @@ var anim_name: String
 
 
 func enter_state() -> void:
-	#make animation speed 1.0
-	sprite.speed_scale = 1.0
+	print("walk state entered")
 
 
 func _physics_process(_delta: float) -> void:
