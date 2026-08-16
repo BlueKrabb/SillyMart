@@ -256,10 +256,9 @@ metadata/_custom_type_script = "uid://0guja6ish6xg"
 script = ExtResource("4_340hg")
 metadata/_custom_type_script = "uid://0guja6ish6xg"
 
-[node name="Walk" type="Node" parent="StateMachine" unique_id=1271044039 node_paths=PackedStringArray("idle_state", "sprint_state", "player") groups=["player"]]
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1271044039 node_paths=PackedStringArray("idle_state", "player") groups=["player"]]
 script = ExtResource("5_wp0h6")
 idle_state = NodePath("../Idle")
-sprint_state = NodePath("../Sprint")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://0guja6ish6xg"
 

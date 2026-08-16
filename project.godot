@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Dialogic="*uid://ds2q0uclmolvu"
+DebugAPI="*uid://boo2p1tbufeof"
 
 [dialogic]
 
@@ -70,11 +71,10 @@ audio/channel_defaults={
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ColorPreview/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/to-do-list/plugin.cfg")
+enabled=PackedStringArray("res://addons/ColorPreview/plugin.cfg", "res://addons/debug_api/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/to-do-list/plugin.cfg")
 
 [file_customization]
 
@@ -86,6 +86,10 @@ folder_colors={
 "res://Assets/Sprites/": "blue",
 "res://addons/": "red"
 }
+
+[gui]
+
+theme/custom_font="uid://ddsplkhi3i4yx"
 
 [input]
 

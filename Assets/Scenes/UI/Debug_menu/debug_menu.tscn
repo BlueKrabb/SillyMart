@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://ccroooxe8o2w0"]
+
+[ext_resource type="FontFile" uid="uid://ddsplkhi3i4yx" path="res://Assets/Fonts/pixel_operator/PixelOperator-Bold.ttf" id="1_ksv6d"]
+[ext_resource type="Script" uid="uid://cilejlgyrejou" path="res://Assets/Scripts/Menus/Debug/debug_manager.gd" id="1_v4mdl"]
+
+[node name="Debug_Menu" type="CanvasLayer" unique_id=1931463900]
+script = ExtResource("1_v4mdl")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1605808306]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1774829660]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1355401483]
+layout_mode = 2
+
+[node name="Fps_HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1877918554]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="fps_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Fps_HBoxContainer" unique_id=1911057877]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "Fps:"
+
+[node name="Fps_Display_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Fps_HBoxContainer" unique_id=712175256]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "000"
+
+[node name="Cords_HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1476346141]
+layout_mode = 2
+
+[node name="Cords_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Cords_HBoxContainer" unique_id=1821913723]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "xyz:"
+
+[node name="Cords_Display_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Cords_HBoxContainer" unique_id=468016744]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "0.0.0"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1204444244]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=545718148]
+layout_mode = 2
+
+[node name="Monitor_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=2007748153]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "Monitor:"
+
+[node name="Monitor_Display_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1271915168]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "000"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=788022269]
+layout_mode = 2
+
+[node name="Display_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer5" unique_id=2066439485]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "Display:"
+
+[node name="Display_Display_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer5" unique_id=1572746671]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "000"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=898686874]
+layout_mode = 2
+
+[node name="Memory_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1849346431]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "Memory usage:"
+
+[node name="Memory_Display_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1191658708]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "000%"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1347890593]
+layout_mode = 2
+
+[node name="Cpu_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=831702777]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "Cpu:"
+
+[node name="Cpu_Display_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=715611495]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "000%"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=922743959]
+layout_mode = 2
+
+[node name="Gpu_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer4" unique_id=470285817]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "Gpu:"
+
+[node name="Gpu_Display_Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer4" unique_id=890163748]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ksv6d")
+theme_override_font_sizes/font_size = 32
+text = "000%"

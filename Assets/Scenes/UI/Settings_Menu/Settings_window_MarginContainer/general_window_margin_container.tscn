@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bnucbmeskp37i"]
+
+[ext_resource type="StyleBox" uid="uid://g3150gkqhuhh" path="res://Assets/DATA/UI/White_outline.tres" id="1_fpvk4"]
+
+[node name="General_window_MarginContainer" type="MarginContainer" unique_id=1667916327]
+custom_minimum_size = Vector2(800, 0)
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="." unique_id=1372886952]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_fpvk4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=633200086]
+layout_mode = 2
+theme_override_constants/separation = 22
+alignment = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="VBoxContainer" unique_id=1211936634]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "color here
+"
+color = Color(1, 0, 0, 1)
+edit_intensity = false

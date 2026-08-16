@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://dcof5l5dw4vtg"]
 
-[ext_resource type="Script" uid="uid://bm578aapw07t" path="res://Assets/Scripts/Menus/settings_menu.gd" id="1_t0ajp"]
+[ext_resource type="Script" uid="uid://bm578aapw07t" path="res://Assets/Scripts/Menus/Settings_menu/settings_menu.gd" id="1_nidql"]
 [ext_resource type="StyleBox" uid="uid://g3150gkqhuhh" path="res://Assets/DATA/UI/White_outline.tres" id="2_4jnv0"]
 [ext_resource type="FontFile" uid="uid://bjhtwukmdyncq" path="res://Assets/Fonts/pixel_operator/PixelOperatorMono-Bold.ttf" id="3_gp2tr"]
 [ext_resource type="FontFile" uid="uid://ddsplkhi3i4yx" path="res://Assets/Fonts/pixel_operator/PixelOperator-Bold.ttf" id="4_nidql"]
 [ext_resource type="ButtonGroup" uid="uid://40oo04mkon77" path="res://Assets/DATA/Button_Group/Settings_Menu/Settings_Menu_button_group.tres" id="5_acit2"]
+[ext_resource type="PackedScene" uid="uid://bnucbmeskp37i" path="res://Assets/Scenes/UI/Settings_Menu/Settings_window_MarginContainer/general_window_margin_container.tscn" id="6_nidql"]
+[ext_resource type="PackedScene" uid="uid://dhqqa41jl3bpe" path="res://Assets/Scenes/UI/Settings_Menu/Settings_window_MarginContainer/audio_window_margin_container.tscn" id="7_acit2"]
+[ext_resource type="PackedScene" uid="uid://r1uxgejc76d7" path="res://Assets/Scenes/UI/Settings_Menu/Settings_window_MarginContainer/video_window_margin_container.tscn" id="8_gkvrv"]
+[ext_resource type="PackedScene" uid="uid://bsax34g5hm3dv" path="res://Assets/Scenes/UI/Settings_Menu/Settings_window_MarginContainer/controls_window_margin_container.tscn" id="9_n6jam"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6yf8"]
 bg_color = Color(1, 1, 1, 1)
@@ -29,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_t0ajp")
+script = ExtResource("1_nidql")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2006615233]
 layout_mode = 1
@@ -68,9 +72,9 @@ theme_override_styles/panel = ExtResource("2_4jnv0")
 [node name="Header_Label" type="Label" parent="MarginContainer/VBoxContainer/Header_MarginContainer" unique_id=1297066931]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0.5019608, 1, 1)
 theme_override_fonts/font = ExtResource("3_gp2tr")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "Text Here"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -101,7 +105,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -123,7 +127,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
-theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -145,7 +149,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
-theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -167,7 +171,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
-theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
@@ -182,104 +186,24 @@ toggle_mode = true
 button_group = ExtResource("5_acit2")
 text = "Controls"
 
-[node name="General_window_MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer" unique_id=1661203981]
-custom_minimum_size = Vector2(800, 0)
+[node name="General_window_MarginContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer" unique_id=1667916327 instance=ExtResource("6_nidql")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/General_window_MarginContainer" unique_id=1688616732]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_4jnv0")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/General_window_MarginContainer" unique_id=2110807494]
-layout_mode = 2
-theme_override_constants/separation = 22
-alignment = 1
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/General_window_MarginContainer/VBoxContainer" unique_id=1168498253]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "color here
-"
-color = Color(1, 0, 0, 1)
-edit_intensity = false
-
-[node name="Audio_window_MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer" unique_id=337026965]
+[node name="Audio_window_MarginContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer" unique_id=1778474318 instance=ExtResource("7_acit2")]
+unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/Audio_window_MarginContainer" unique_id=1833438866]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_4jnv0")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/Audio_window_MarginContainer" unique_id=1837710351]
-layout_mode = 2
-theme_override_constants/separation = 22
-alignment = 1
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/Audio_window_MarginContainer/VBoxContainer" unique_id=1992528539]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "color here
-"
-color = Color(0, 1, 0, 1)
-edit_intensity = false
-
-[node name="Video_window_MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer" unique_id=912637580]
+[node name="Video_window_MarginContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer" unique_id=1811080024 instance=ExtResource("8_gkvrv")]
+unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/Video_window_MarginContainer" unique_id=972810378]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_4jnv0")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/Video_window_MarginContainer" unique_id=1303465607]
-layout_mode = 2
-theme_override_constants/separation = 22
-alignment = 1
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/Video_window_MarginContainer/VBoxContainer" unique_id=2099067569]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "color here
-"
-color = Color(0, 1, 1, 1)
-edit_intensity = false
-
-[node name="Controls_window_MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer" unique_id=519772826]
+[node name="Controls_window_MarginContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer" unique_id=874939994 instance=ExtResource("9_n6jam")]
+unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/Controls_window_MarginContainer" unique_id=1081289439]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_4jnv0")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/Controls_window_MarginContainer" unique_id=1488766703]
-layout_mode = 2
-theme_override_constants/separation = 22
-alignment = 1
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/Body_HBoxContainer/Controls_window_MarginContainer/VBoxContainer" unique_id=735114943]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "color here
-"
-color = Color(0, 0, 1, 1)
-edit_intensity = false
 
 [node name="Footer_MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=781784932]
 custom_minimum_size = Vector2(0, 200)
