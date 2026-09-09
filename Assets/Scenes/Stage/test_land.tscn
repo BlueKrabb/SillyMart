@@ -1,13 +1,19 @@
 [gd_scene format=3 uid="uid://blul7bt5fot3x"]
 
 [ext_resource type="PackedScene" uid="uid://ci25kr5lae5d3" path="res://Assets/Scenes/Player/player.tscn" id="1_l3643"]
+[ext_resource type="Script" uid="uid://dgrqtnsuuleck" path="res://Assets/Scripts/test_land.gd" id="1_s2273"]
 [ext_resource type="Script" uid="uid://csav5kp3pkgen" path="res://Assets/Scripts/camera_zoom.gd" id="2_rtvhh"]
 [ext_resource type="Texture2D" uid="uid://cimwxuijw73yk" path="res://icon.svg" id="2_x047q"]
+[ext_resource type="Material" uid="uid://ggvhb4dwevaw" path="res://Assets/Shader/Material/crt_effect.tres" id="4_dwnhu"]
+[ext_resource type="PackedScene" uid="uid://dtqvyh55550s2" path="res://Assets/Scenes/UI/pause_menu/pause_menu.tscn" id="6_ilj1n"]
+[ext_resource type="PackedScene" uid="uid://qyw6f7f6bj7g" path="res://Assets/Scenes/UI/Settings_menu/settings_menu.tscn" id="7_fwru0"]
 
 [node name="test_land" type="Node2D" unique_id=455992744]
+script = ExtResource("1_s2273")
 
 [node name="Player" parent="." unique_id=1214073038 instance=ExtResource("1_l3643")]
-position = Vector2(901.00006, 551)
+position = Vector2(307.00006, 299)
+scale = Vector2(1, 1)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1155922757]
 position = Vector2(29.49997, -21.5)
@@ -18,13 +24,39 @@ rotation_smoothing_enabled = true
 script = ExtResource("2_rtvhh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1982605108]
-position = Vector2(410, 296)
+position = Vector2(145, 171)
+scale = Vector2(0.32, 0.32)
 texture = ExtResource("2_x047q")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=252511732]
-position = Vector2(1463, 858)
+position = Vector2(444, 318.00003)
+scale = Vector2(0.59375, 0.59375)
 texture = ExtResource("2_x047q")
 
 [node name="Sprite2D3" type="Sprite2D" parent="." unique_id=706920445]
-position = Vector2(1463, 186)
+position = Vector2(440, 227)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_x047q")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1023333088]
+
+[node name="Crt" type="ColorRect" parent="CanvasLayer" unique_id=768519923]
+material = ExtResource("4_dwnhu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = 1.0
+offset_right = 74.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pause_menu" parent="CanvasLayer" unique_id=951139938 instance=ExtResource("6_ilj1n")]
+unique_name_in_owner = true
+
+[node name="Settings_menu" parent="CanvasLayer" unique_id=1297174901 instance=ExtResource("7_fwru0")]
+unique_name_in_owner = true
+visible = false
+
+[editable path="CanvasLayer/Pause_menu"]

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cr0b7lt3n5okh"]
+
+[node name="Reset_Keybinds_Button" type="Button" unique_id=2128983336]
+custom_minimum_size = Vector2(400, 25)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1882861719]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=844912015]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_behavior_recursive = 1
+text = "Reset to default"
+horizontal_alignment = 1
+vertical_alignment = 1

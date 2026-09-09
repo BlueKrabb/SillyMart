@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dtqvyh55550s2"]
+
+[ext_resource type="Theme" uid="uid://bwv42csuenkdn" path="res://Assets/DATA/UI/pause_menu_buttons.tres" id="1_ixivb"]
+[ext_resource type="Material" uid="uid://cr83vyq7m54t" path="res://Assets/Shader/Material/pause_menu_BG.tres" id="1_yyeun"]
+
+[node name="Pause_menu" type="Control" unique_id=951139938]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1270816042]
+material = ExtResource("1_yyeun")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=1383793223]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=1998553059]
+layout_mode = 2
+
+[node name="Resume_Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1407813297]
+layout_mode = 2
+theme = ExtResource("1_ixivb")
+text = "Continue"
+
+[node name="Settings_Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1243601134]
+layout_mode = 2
+theme = ExtResource("1_ixivb")
+text = "Settings"
+
+[node name="Exit_Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=143286865]
+layout_mode = 2
+theme = ExtResource("1_ixivb")
+text = "Save and Exit"

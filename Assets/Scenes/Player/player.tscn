@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://ci25kr5lae5d3"]
 
 [ext_resource type="Texture2D" uid="uid://bd2r01ryvmwe7" path="res://Assets/Sprites/Player/Player.png" id="2_7dd06"]
+[ext_resource type="Material" uid="uid://dh8p3dyly88yt" path="res://Assets/Shader/Material/shadows.tres" id="2_wp0h6"]
 [ext_resource type="Script" uid="uid://c43mnwqgwwvki" path="res://Assets/Scripts/StateMachine/state_machine.gd" id="3_3b2lm"]
+[ext_resource type="Script" uid="uid://bexumdafgloom" path="res://Assets/Scripts/Effects/Shadow/shadow.gd" id="3_fg6bc"]
 [ext_resource type="Script" uid="uid://0guja6ish6xg" path="res://Assets/Scripts/StateMachine/state.gd" id="4_340hg"]
 [ext_resource type="Script" uid="uid://1v2h1m1clx5i" path="res://Assets/Scripts/StateMachine/States/Player/idle_state.gd" id="4_wp0h6"]
 [ext_resource type="Script" uid="uid://cr6pdcqvx82od" path="res://Assets/Scripts/StateMachine/States/Player/walk_state.gd" id="5_wp0h6"]
@@ -236,6 +238,15 @@ position = Vector2(1, -30)
 sprite_frames = SubResource("SpriteFrames_lerqx")
 animation = &"walk_up"
 autoplay = "idle_down"
+
+[node name="Shadow" type="AnimatedSprite2D" parent="Sprite" unique_id=640636758]
+unique_name_in_owner = true
+z_index = -1
+material = ExtResource("2_wp0h6")
+sprite_frames = SubResource("SpriteFrames_lerqx")
+animation = &"walk_up"
+autoplay = "idle_down"
+script = ExtResource("3_fg6bc")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1288208828]
 position = Vector2(0, -18)

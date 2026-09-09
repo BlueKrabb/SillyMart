@@ -1,36 +1,30 @@
 extends Control
 
-@onready var general_button: Button = %General_Button
+@onready var video_container: PanelContainer = %Video_container
+@onready var audio_container: PanelContainer = %Audio_Container
+@onready var controls_container: PanelContainer = %Controls_container
+
+@onready var video_button: Button = %Video_Button
 @onready var audio_button: Button = %Audio_Button
-@onready var videp_button: Button = %Videp_Button
 @onready var controls_button: Button = %Controls_Button
 
-@onready var header_label: Label = %Header_Label
-
-
-
-#vars
-var windows: Array [MarginContainer] = []
-
+var windows:Array[PanelContainer] = []
 
 func _ready() -> void:
-	
+	pass
 	print("hello")
 	windows = [
-		%General_window_MarginContainer, %Audio_window_MarginContainer, %Video_window_MarginContainer, %Controls_window_MarginContainer
-	]
+		%Video_container, %Audio_Container, %Controls_container]
 	
-	general_button.pressed.connect(show_window.bind(windows[0]))
+	video_button.pressed.connect(show_window.bind(windows[0]))
 	audio_button.pressed.connect(show_window.bind(windows[1]))
-	videp_button.pressed.connect(show_window.bind(windows[2]))
-	controls_button.pressed.connect(show_window.bind(windows[3]))
+	controls_button.pressed.connect(show_window.bind(windows[2]))
 	
 	show_window(windows[0])
-	general_button.grab_focus()
-	header_label.text = "Change gameplay settings"
+	video_button.grab_focus()
 
-func show_window(windows_to_show: MarginContainer) -> void:
-	#@warning_ignore("shadowed_variable")
+func show_window(windows_to_show: PanelContainer) -> void:
+	@warning_ignore("shadowed_variable")
 	for windows in windows:
 		windows.hide()
 		
@@ -38,20 +32,4 @@ func show_window(windows_to_show: MarginContainer) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-
-
-func _on_general_button_pressed() -> void:
-	header_label.text = "Change gameplay settings"
-
-
-func _on_audio_button_pressed() -> void:
-	header_label.text = "Change audio values"
-
-
-func _on_videp_button_pressed() -> void:
-	header_label.text = "Change video settings"
-
-
-func _on_controls_button_pressed() -> void:
-	header_label.text = "Change keybinds"
+		pass

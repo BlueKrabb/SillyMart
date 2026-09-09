@@ -1,0 +1,21 @@
+[gd_resource type="Theme" format=3 uid="uid://bwv42csuenkdn"]
+
+[ext_resource type="FontFile" uid="uid://ddsplkhi3i4yx" path="res://Assets/Fonts/pixel_operator/PixelOperator-Bold.ttf" id="1_gkd6e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gkd6e"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+
+[resource]
+Button/colors/font_color = Color(0.88, 0.88, 0.88, 1)
+Button/colors/font_disabled_color = Color(0.29, 0.29, 0.29, 1)
+Button/colors/font_focus_color = Color(0, 0.6156863, 0.9490196, 1)
+Button/colors/font_hover_color = Color(0, 0.61750007, 0.95, 1)
+Button/colors/font_pressed_color = Color(0, 0.6156863, 0.9490196, 1)
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_gkd6e")
+Button/styles/disabled = SubResource("StyleBoxEmpty_gkd6e")
+Button/styles/focus = SubResource("StyleBoxEmpty_gkd6e")
+Button/styles/hover = SubResource("StyleBoxEmpty_gkd6e")
+Button/styles/normal = SubResource("StyleBoxEmpty_gkd6e")
+Button/styles/pressed = SubResource("StyleBoxEmpty_gkd6e")
