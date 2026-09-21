@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dtqvyh55550s2"]
 
-[ext_resource type="Theme" uid="uid://bwv42csuenkdn" path="res://Assets/DATA/UI/pause_menu_buttons.tres" id="1_ixivb"]
-[ext_resource type="Material" uid="uid://cr83vyq7m54t" path="res://Assets/Shader/Material/pause_menu_BG.tres" id="1_yyeun"]
+[ext_resource type="Theme" uid="uid://bwv42csuenkdn" path="res://Assets/Resource/UI/pause_menu_buttons.tres" id="1_ixivb"]
+[ext_resource type="Material" uid="uid://cr83vyq7m54t" path="res://Assets/Resource/Shader_MAT/Material/pause_menu_BG.tres" id="1_yyeun"]
 
 [node name="Pause_menu" type="Control" unique_id=951139938]
 layout_mode = 3
@@ -29,17 +29,26 @@ size_flags_vertical = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=1998553059]
 layout_mode = 2
 
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1916366845]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Paused"
+horizontal_alignment = 1
+
 [node name="Resume_Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1407813297]
 layout_mode = 2
 theme = ExtResource("1_ixivb")
+theme_override_font_sizes/font_size = 32
 text = "Continue"
 
 [node name="Settings_Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1243601134]
 layout_mode = 2
 theme = ExtResource("1_ixivb")
+theme_override_font_sizes/font_size = 32
 text = "Settings"
 
 [node name="Exit_Button" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=143286865]
 layout_mode = 2
 theme = ExtResource("1_ixivb")
+theme_override_font_sizes/font_size = 32
 text = "Save and Exit"

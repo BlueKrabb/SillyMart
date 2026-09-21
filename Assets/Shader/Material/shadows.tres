@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://dh8p3dyly88yt"]
-
-[ext_resource type="Shader" uid="uid://c8k0m8i0xxdxq" path="res://Assets/Shader/Shader code/shadows.gdshader" id="1_8iwlw"]
-
-[resource]
-shader = ExtResource("1_8iwlw")
-shader_parameter/look_right = true
-shader_parameter/shadow_color = Color(0, 0, 0, 0.54901963)

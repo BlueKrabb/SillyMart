@@ -10,20 +10,19 @@ extends Node2D
 
 var paused: bool = false
 
+
+ 
 func _ready() -> void:
 	resume_button.pressed.connect(resume_game)
 	exit_button.pressed.connect(quit_game)
 	settings_button.pressed.connect(show_settings)
 	settings_menu.hide()
-	
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		pause_menu.show()
 	
-	if settings_menu.is_visible_in_tree():
-		pause_menu.hide()
 		
 	
 func resume_game():
@@ -34,3 +33,7 @@ func quit_game():
 	
 func show_settings():
 	settings_menu.show()
+
+
+
+	

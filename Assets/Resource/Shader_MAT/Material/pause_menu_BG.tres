@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cr83vyq7m54t"]
+
+[ext_resource type="Shader" uid="uid://dcti3akfnd2p7" path="res://Assets/Scripts/Effects/Shader code/pause_menu_BG.gdshader" id="1_el63e"]
+
+[resource]
+shader = ExtResource("1_el63e")
+shader_parameter/blur_amount = 3.6970002706075
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)

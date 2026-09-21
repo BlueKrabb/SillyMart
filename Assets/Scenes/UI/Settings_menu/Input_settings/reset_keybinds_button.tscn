@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cr0b7lt3n5okh"]
 
 [node name="Reset_Keybinds_Button" type="Button" unique_id=2128983336]
-custom_minimum_size = Vector2(400, 25)
+custom_minimum_size = Vector2(120, 25)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1882861719]
 layout_mode = 1

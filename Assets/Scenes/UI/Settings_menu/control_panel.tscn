@@ -1,0 +1,465 @@
+[gd_scene format=3 uid="uid://dq1vkgyk2dxj4"]
+
+[ext_resource type="Texture2D" uid="uid://daqoglu38c7us" path="res://Assets/Sprites/Ui/Windows/control_window3.png" id="1_1b0p2"]
+[ext_resource type="Texture2D" uid="uid://cr6wdurxigrjt" path="res://Assets/Sprites/Ui/Buttons/Buttons9.png" id="2_2d03l"]
+[ext_resource type="Script" uid="uid://b167dq1k6rqa7" path="res://Assets/Scripts/Ui/Settings_menu/control_panel.gd" id="2_r3g7i"]
+[ext_resource type="Texture2D" uid="uid://tb4shm10dehv" path="res://Assets/Sprites/Ui/Buttons/Buttons10.png" id="3_2d03l"]
+[ext_resource type="Texture2D" uid="uid://br1f8bgseu384" path="res://Assets/Sprites/Ui/Buttons/Settings_icon3.png" id="3_cydsc"]
+[ext_resource type="ButtonGroup" uid="uid://drgrqm8scy5s8" path="res://Assets/Resource/Button_Group/Settings_Menu_button_group.tres" id="4_r3g7i"]
+[ext_resource type="Texture2D" uid="uid://v8t826equpbl" path="res://Assets/Sprites/Ui/Buttons/Settings_icon4.png" id="4_u6qt1"]
+[ext_resource type="Texture2D" uid="uid://djbq255rdvtr0" path="res://Assets/Sprites/Ui/Buttons/Settings_icon6.png" id="5_r3g7i"]
+[ext_resource type="Texture2D" uid="uid://djiv3lhsv0nyb" path="res://Assets/Sprites/Ui/Buttons/Settings_icon5.png" id="6_x2kum"]
+[ext_resource type="Texture2D" uid="uid://y82y3h22t3ow" path="res://Assets/Sprites/Ui/Buttons/Settings_icon1.png" id="7_4cbii"]
+[ext_resource type="Texture2D" uid="uid://drg4tn7vf8wv6" path="res://Assets/Sprites/Ui/Buttons/Settings_icon2.png" id="8_wv5td"]
+[ext_resource type="LabelSettings" uid="uid://b6uc08vd1ynd0" path="res://Assets/Resource/Label settings/black_label_settings.tres" id="12_4cbii"]
+[ext_resource type="PackedScene" uid="uid://b8u2xcotog0kx" path="res://Assets/Scenes/UI/Settings_menu/Input_settings/input_container.tscn" id="12_x2kum"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgx7u"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+border_width_right = 1
+border_color = Color(0.13725491, 0.25882354, 0.49411765, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_en4qd"]
+
+[node name="ControlPanel" type="NinePatchRect" unique_id=1590320075 groups=["Input_VBoxContainer"]]
+custom_minimum_size = Vector2(400, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1b0p2")
+region_rect = Rect2(16, 16, 176, 178)
+patch_margin_left = 16
+patch_margin_top = 18
+patch_margin_right = 16
+patch_margin_bottom = 16
+script = ExtResource("2_r3g7i")
+
+[node name="Header_MarginContainer" type="MarginContainer" parent="." unique_id=731366060]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="ColorRect" type="ColorRect" parent="Header_MarginContainer" unique_id=563884002]
+custom_minimum_size = Vector2(100, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 1
+mouse_behavior_recursive = 1
+
+[node name="Control_panel_Label" type="Label" parent="Header_MarginContainer/ColorRect" unique_id=1851781535]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+mouse_filter = 1
+mouse_behavior_recursive = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Control Panel"
+
+[node name="Close_Button" type="TextureButton" parent="Header_MarginContainer" unique_id=1401660398]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("2_2d03l")
+texture_pressed = ExtResource("3_2d03l")
+texture_hover = ExtResource("2_2d03l")
+texture_disabled = ExtResource("2_2d03l")
+texture_focused = ExtResource("3_2d03l")
+
+[node name="Body_MarginContainer" type="MarginContainer" parent="." unique_id=690181445]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -132.0
+offset_right = 198.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Body_MarginContainer" unique_id=590192264]
+layout_mode = 2
+theme_override_constants/separation = -38
+
+[node name="Panel" type="PanelContainer" parent="Body_MarginContainer/HBoxContainer" unique_id=464731487]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_rgx7u")
+
+[node name="MarginContainer" type="MarginContainer" parent="Body_MarginContainer/HBoxContainer/Panel" unique_id=1263345305]
+layout_mode = 2
+theme_override_constants/margin_left = -46
+theme_override_constants/margin_right = 9
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer" unique_id=1063012378]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Video_Button" type="TextureButton" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer" unique_id=635382183]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+toggle_mode = true
+button_group = ExtResource("4_r3g7i")
+texture_normal = ExtResource("3_cydsc")
+texture_pressed = ExtResource("4_u6qt1")
+texture_hover = ExtResource("3_cydsc")
+texture_disabled = ExtResource("3_cydsc")
+texture_focused = ExtResource("4_u6qt1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Video_Button" unique_id=1086630445]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -10.0
+offset_right = 28.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.8666667, 0.8666667, 0.8666667, 1)
+
+[node name="Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Video_Button/ColorRect" unique_id=1428278823]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Video"
+horizontal_alignment = 1
+
+[node name="Audio_Button" type="TextureButton" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer" unique_id=1956955172]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+toggle_mode = true
+button_group = ExtResource("4_r3g7i")
+texture_normal = ExtResource("5_r3g7i")
+texture_pressed = ExtResource("6_x2kum")
+texture_hover = ExtResource("5_r3g7i")
+texture_disabled = ExtResource("5_r3g7i")
+texture_focused = ExtResource("6_x2kum")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Audio_Button" unique_id=1615495675]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -10.0
+offset_right = 28.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.8666667, 0.8666667, 0.8666667, 1)
+
+[node name="Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Audio_Button/ColorRect" unique_id=1641381498]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="Controls_Button" type="TextureButton" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer" unique_id=820986218]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+toggle_mode = true
+button_group = ExtResource("4_r3g7i")
+texture_normal = ExtResource("8_wv5td")
+texture_pressed = ExtResource("7_4cbii")
+texture_hover = ExtResource("8_wv5td")
+texture_disabled = ExtResource("8_wv5td")
+texture_focused = ExtResource("7_4cbii")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Controls_Button" unique_id=1371603615]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -10.0
+offset_right = 28.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.8666667, 0.8666667, 0.8666667, 1)
+
+[node name="Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Controls_Button/ColorRect" unique_id=986690362]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="Windows" type="PanelContainer" parent="Body_MarginContainer/HBoxContainer" unique_id=162725328]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_en4qd")
+
+[node name="Video_MarginContainer" type="MarginContainer" parent="Body_MarginContainer/HBoxContainer/Windows" unique_id=1351874764]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = -14
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = -8
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer" unique_id=1607598795]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer" unique_id=921374418]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Video settings"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer" unique_id=1981942377]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer" unique_id=391406538]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer/VBoxContainer" unique_id=287241612]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "window mode"
+
+[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer/VBoxContainer" unique_id=2102889209]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+mouse_filter = 1
+mouse_behavior_recursive = 1
+
+[node name="OptionButton" type="OptionButton" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer/VBoxContainer" unique_id=951322323]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Crt_VBoxContainer" type="HBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer" unique_id=1184225932]
+layout_mode = 2
+
+[node name="Crt_Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer/Crt_VBoxContainer" unique_id=1261421118]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Crt effect"
+
+[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer/Crt_VBoxContainer" unique_id=1049639194]
+custom_minimum_size = Vector2(20.325, 0)
+layout_mode = 2
+mouse_filter = 1
+mouse_behavior_recursive = 1
+
+[node name="Crt_Button" type="Button" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer/Crt_VBoxContainer" unique_id=163642193]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "off"
+
+[node name="Brightness_VBoxContainer" type="HBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer" unique_id=2067102276]
+layout_mode = 2
+
+[node name="Brightness_Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer/Brightness_VBoxContainer" unique_id=376228049]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Brightness"
+
+[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer/Brightness_VBoxContainer" unique_id=1468624259]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+mouse_filter = 1
+mouse_behavior_recursive = 1
+
+[node name="Brightness_slider" type="HSlider" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer/HBoxContainer/Brightness_VBoxContainer" unique_id=1687808680]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Audio_MarginContainer" type="MarginContainer" parent="Body_MarginContainer/HBoxContainer/Windows" unique_id=343416658]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = -20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer" unique_id=2136635618]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer" unique_id=1607173320]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Audio settings"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer" unique_id=1342885706]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer" unique_id=391564257]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer" unique_id=940989764]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Master "
+
+[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer" unique_id=553061927]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+mouse_filter = 1
+mouse_behavior_recursive = 1
+
+[node name="OptionButton" type="HSlider" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer" unique_id=398431232]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Crt_VBoxContainer" type="HBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer" unique_id=1036074147]
+layout_mode = 2
+
+[node name="Crt_Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/Crt_VBoxContainer" unique_id=2140718845]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Music"
+
+[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/Crt_VBoxContainer" unique_id=913398301]
+custom_minimum_size = Vector2(20.325, 0)
+layout_mode = 2
+mouse_filter = 1
+mouse_behavior_recursive = 1
+
+[node name="Crt_Button" type="HSlider" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/Crt_VBoxContainer" unique_id=107762224]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Brightness_VBoxContainer" type="HBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer" unique_id=1100515478]
+layout_mode = 2
+
+[node name="Brightness_Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/Brightness_VBoxContainer" unique_id=81652360]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Sfx"
+
+[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/Brightness_VBoxContainer" unique_id=410908372]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+mouse_filter = 1
+mouse_behavior_recursive = 1
+
+[node name="Brightness_slider" type="HSlider" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/Brightness_VBoxContainer" unique_id=550136193]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer" unique_id=1240826557]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer2" unique_id=756707697]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Music"
+
+[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer2" unique_id=137342915]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+mouse_behavior_recursive = 1
+
+[node name="CheckButton" type="CheckButton" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1383966095]
+layout_mode = 2
+
+[node name="Controls_MarginContainer" type="MarginContainer" parent="Body_MarginContainer/HBoxContainer/Windows" unique_id=1234745950]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer" unique_id=1679738797]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer/ScrollContainer" unique_id=111564914]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Controls_Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer/ScrollContainer/VBoxContainer" unique_id=2059689952]
+layout_mode = 2
+text = "Key binds"
+label_settings = ExtResource("12_4cbii")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer/ScrollContainer/VBoxContainer" unique_id=405251897]
+layout_mode = 2
+
+[node name="Input_list_HBoxContainer" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer/ScrollContainer/VBoxContainer" unique_id=1186815379]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputRemapButton" parent="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer/ScrollContainer/VBoxContainer/Input_list_HBoxContainer" unique_id=1277156902 instance=ExtResource("12_x2kum")]
+layout_mode = 2

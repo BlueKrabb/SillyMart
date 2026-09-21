@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b8u2xcotog0kx"]
+
+[node name="InputRemapButton" type="Button" unique_id=1277156902]
+custom_minimum_size = Vector2(100, 25)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=373039803]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="Input_VBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1103645010]
+layout_mode = 2
+
+[node name="Action_Label" type="Label" parent="MarginContainer/Input_VBoxContainer" unique_id=1988272884]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Action"
+
+[node name="Control" type="Control" parent="MarginContainer/Input_VBoxContainer" unique_id=2144829515]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Input_Label" type="Label" parent="MarginContainer/Input_VBoxContainer" unique_id=1257535214]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Input"
+horizontal_alignment = 1
+vertical_alignment = 1
