@@ -5,9 +5,9 @@
 [resource]
 shader = ExtResource("1_fgf83")
 shader_parameter/resolution = Vector2(1024, 768)
-shader_parameter/scan_line_amount = 0.5
+shader_parameter/scan_line_amount = 1.0
 shader_parameter/warp_amount = 0.05
-shader_parameter/vignette_amount = 0.5
-shader_parameter/vignette_intensity = 0.3
-shader_parameter/grille_amount = 0.05
-shader_parameter/brightness_boost = 1.2
+shader_parameter/vignette_amount = 0.86000004085
+shader_parameter/vignette_intensity = 0.606000028785
+shader_parameter/grille_amount = 0.314000014915
+shader_parameter/brightness_boost = 1.0

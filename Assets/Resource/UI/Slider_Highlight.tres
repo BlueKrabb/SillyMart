@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://dpjysndn4i27j"]
+
+[ext_resource type="Texture2D" uid="uid://bn0i8aow38mgy" path="res://Assets/Sprites/Ui/Slider/Hslidert_highlight2.png" id="1_2cx7o"]
+
+[resource]
+content_margin_top = 10.0
+content_margin_bottom = 5.0
+texture = ExtResource("1_2cx7o")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(1, 1, 62, 14)

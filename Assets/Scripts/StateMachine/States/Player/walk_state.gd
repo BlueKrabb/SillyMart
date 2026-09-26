@@ -70,6 +70,7 @@ func play_animation(prefix: String, dir: Vector2) -> void:
 		sprite.play(anim_name)
 
 #--------player walk movement----------
+@warning_ignore("unused_parameter")
 func walk_movement(input_dir : Vector2):	#this will be called when the player is walking
 	#gets called when the player is walking
 	if player_direction != Vector2.ZERO:	#if the player is walking do this

@@ -1,6 +1,5 @@
 extends Node
 var arrow = preload("res://Assets/Sprites/Ui/Cursor/arrow.png")
-var beam = preload("res://Assets/Sprites/Ui/Beam_big.png")
 
 var fullscreen: bool = false
 
@@ -23,7 +22,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _quiting_game():
 	if !Input.is_action_pressed("ui_cancel"):
 		return
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1.5).timeout
 	if !Input.is_action_pressed("ui_cancel"):
 		return
 	print("closing gane....")
@@ -35,5 +34,5 @@ func toggle_fullscreen():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		print("window mode is now windowed")
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+		DisplayServer.window_set_size(Vector2i(800, 600))

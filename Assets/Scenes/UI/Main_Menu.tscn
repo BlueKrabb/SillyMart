@@ -1,10 +1,5 @@
 [gd_scene format=3 uid="uid://be3wu3q165bdq"]
 
-[ext_resource type="FontFile" uid="uid://ddsplkhi3i4yx" path="res://Assets/Fonts/pixel_operator/PixelOperator-Bold.ttf" id="1_nexh6"]
-[ext_resource type="Texture2D" uid="uid://0x674ys57yor" path="res://Assets/Sprites/Ui/new-button.png" id="2_lad0c"]
-[ext_resource type="Texture2D" uid="uid://bkv6b6ttu405h" path="res://Assets/Sprites/Ui/Settings-button.png" id="3_4o6um"]
-[ext_resource type="Texture2D" uid="uid://buvrpc8d0n83w" path="res://Assets/Sprites/Ui/Exit-button.png" id="4_jf3c4"]
-
 [node name="Control" type="Control" unique_id=1211050428]
 layout_mode = 3
 anchors_preset = 15
@@ -22,62 +17,24 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1121924082]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=328384056]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1710518221]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2052943041]
 layout_mode = 2
-theme_override_constants/separation = 149
-alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=194958748]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=604139082]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_nexh6")
-theme_override_font_sizes/font_size = 113
-text = "SillyMart"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1216473801]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1710009626]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme_override_constants/separation = 65
-alignment = 1
+size_flags_horizontal = 3
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1826873758]
-custom_minimum_size = Vector2(50, 50)
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1222261256]
 layout_mode = 2
-texture_normal = ExtResource("2_lad0c")
-texture_pressed = ExtResource("2_lad0c")
-texture_hover = ExtResource("2_lad0c")
-texture_disabled = ExtResource("2_lad0c")
-texture_focused = ExtResource("2_lad0c")
-stretch_mode = 0
-
-[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1462831990]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture_normal = ExtResource("3_4o6um")
-texture_pressed = ExtResource("3_4o6um")
-texture_hover = ExtResource("3_4o6um")
-texture_disabled = ExtResource("3_4o6um")
-texture_focused = ExtResource("3_4o6um")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton3" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1975399510]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture_normal = ExtResource("4_jf3c4")
-texture_pressed = ExtResource("4_jf3c4")
-texture_hover = ExtResource("4_jf3c4")
-texture_disabled = ExtResource("4_jf3c4")
-texture_focused = ExtResource("4_jf3c4")
-ignore_texture_size = true
-stretch_mode = 0

@@ -5,10 +5,8 @@
 [ext_resource type="Script" uid="uid://csav5kp3pkgen" path="res://Assets/Scripts/camera_zoom.gd" id="2_rtvhh"]
 [ext_resource type="Texture2D" uid="uid://cimwxuijw73yk" path="res://icon.svg" id="2_x047q"]
 [ext_resource type="Material" uid="uid://ggvhb4dwevaw" path="res://Assets/Resource/Shader_MAT/Material/crt_effect.tres" id="4_dwnhu"]
-[ext_resource type="Script" uid="uid://l3y2724lh2od" path="res://Assets/Scripts/sprite_2d_3.gd" id="5_ilj1n"]
 [ext_resource type="PackedScene" uid="uid://dtqvyh55550s2" path="res://Assets/Scenes/UI/pause_menu/pause_menu.tscn" id="6_ilj1n"]
 [ext_resource type="Texture2D" uid="uid://buvrpc8d0n83w" path="res://Assets/Sprites/Ui/Exit-button.png" id="6_r4vgu"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/UI/Settings_menu/settings_menu.tscn" id="7_fwru0"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fwru0"]
 
@@ -466,9 +464,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_s2273"]
-radius = 89.88882
-
 [node name="test_land" type="Node2D" unique_id=455992744]
 script = ExtResource("1_s2273")
 
@@ -524,14 +519,6 @@ position = Vector2(440, 227)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_pl7um")
 autoplay = "new_animation"
-script = ExtResource("5_ilj1n")
-
-[node name="Area2D" type="Area2D" parent="Sprite2D3" unique_id=484268947]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D3/Area2D" unique_id=747356074]
-shape = SubResource("CircleShape2D_s2273")
 
 [node name="Label" type="Label" parent="Sprite2D3" unique_id=1081992409]
 offset_left = -142.0
@@ -548,28 +535,22 @@ material = ExtResource("4_dwnhu")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -109.0
+offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Pause_menu" parent="CanvasLayer" unique_id=951139938 instance=ExtResource("6_ilj1n")]
-unique_name_in_owner = true
-visible = false
-
-[node name="Settings_menu" parent="CanvasLayer" unique_id=1297174901 instance=ExtResource("7_fwru0")]
-unique_name_in_owner = true
 visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1499604525]
+visible = false
 position = Vector2(61, 163)
 color = Color(0, 0, 0, 1)
 
 [node name="PointLight2D" type="DirectionalLight2D" parent="." unique_id=2081359486]
+visible = false
 position = Vector2(257, 282)
 scale = Vector2(1.3067485, 1.214724)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0.80655646, 0)
-
-[connection signal="area_entered" from="Sprite2D3/Area2D" to="Sprite2D3" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Sprite2D3/Area2D" to="Sprite2D3" method="_on_area_2d_area_exited"]
-
-[editable path="CanvasLayer/Pause_menu"]

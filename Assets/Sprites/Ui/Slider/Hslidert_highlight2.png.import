@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vd6yfm6p0nru"
-path="res://.godot/imported/window.png-5e11c7f4d430375583c700298cce3311.ctex"
+uid="uid://bn0i8aow38mgy"
+path="res://.godot/imported/Hslidert_highlight2.png-4a3012fe613f508482b06dfed399aa42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Ui/window.png"
-dest_files=["res://.godot/imported/window.png-5e11c7f4d430375583c700298cce3311.ctex"]
+source_file="res://Assets/Sprites/Ui/Slider/Hslidert_highlight2.png"
+dest_files=["res://.godot/imported/Hslidert_highlight2.png-4a3012fe613f508482b06dfed399aa42.ctex"]
 
 [params]
 

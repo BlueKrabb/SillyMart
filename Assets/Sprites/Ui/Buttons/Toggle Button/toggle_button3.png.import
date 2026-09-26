@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo1prjj52qnvr"
-path="res://.godot/imported/Beam_big.png-d0668ed2faeba0a9c8c781f9e137fdc0.ctex"
+uid="uid://dicqt62enfx6f"
+path="res://.godot/imported/toggle_button3.png-2a66cb4d6f73286dd3edea6031b61c8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Ui/Beam_big.png"
-dest_files=["res://.godot/imported/Beam_big.png-d0668ed2faeba0a9c8c781f9e137fdc0.ctex"]
+source_file="res://Assets/Sprites/Ui/Buttons/Toggle Button/toggle_button3.png"
+dest_files=["res://.godot/imported/toggle_button3.png-2a66cb4d6f73286dd3edea6031b61c8f.ctex"]
 
 [params]
 
