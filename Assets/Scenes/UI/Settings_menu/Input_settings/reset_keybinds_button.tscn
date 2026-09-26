@@ -1,13 +1,63 @@
 [gd_scene format=3 uid="uid://cr0b7lt3n5okh"]
 
+[ext_resource type="Texture2D" uid="uid://275pxqlg3vko" path="res://Assets/Sprites/Ui/Buttons/Base_button1.png" id="1_s25a4"]
+[ext_resource type="Texture2D" uid="uid://babc65xcvmwld" path="res://Assets/Sprites/Ui/Buttons/Base_button2.png" id="2_xejil"]
+[ext_resource type="Texture2D" uid="uid://0q0fc1f6x5pv" path="res://Assets/Sprites/Ui/Buttons/Base_button3.png" id="3_t7be0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xejil"]
+texture = ExtResource("1_s25a4")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(1, 1, 30, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t7be0"]
+texture = ExtResource("2_xejil")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 2, 32, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tjboq"]
+texture = ExtResource("3_t7be0")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 32, 18)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_04i8j"]
+load_path = "res://.godot/imported/Base_button2.png-c63f41ce25626763f0e2fdadee3ff0ac.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2x45y"]
+texture = SubResource("CompressedTexture2D_04i8j")
+texture_margin_left = 2.0
+texture_margin_top = 3.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 2, 32, 15)
+
 [node name="Reset_Keybinds_Button" type="Button" unique_id=2128983336]
 custom_minimum_size = Vector2(120, 25)
+offset_right = 169.0
+offset_bottom = 25.0
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_xejil")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_t7be0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tjboq")
+theme_override_styles/focus = SubResource("StyleBoxTexture_2x45y")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1882861719]
+[node name="HBoxContainer" type="MarginContainer" parent="." unique_id=570121330]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -15,6 +65,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_behavior_recursive = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Reset to default"
 horizontal_alignment = 1
 vertical_alignment = 1

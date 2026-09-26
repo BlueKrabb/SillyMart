@@ -6,7 +6,7 @@ const SETTINGS_FILE_PATH = "res://Settings.cfg"
 
 func _ready() -> void:
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
-		config.set_value("video", "window_mode", "fullscreen")
+		config.set_value("video", "window_mode", "Fullscreen")
 		config.set_value("video", "crt_effect", true)
 		config.set_value("video", "camera_shake", true)
 		config.set_value("video", "brightness_value", 50.0)
@@ -48,3 +48,40 @@ func load_audio_settings():
 	for key in config.get_section_keys("audio"):
 		audio_settings[key] = config.get_value("audio", key)
 	return audio_settings
+
+func save_keybinds(action: StringName, event: InputEvent):
+	var event_str
+	if event is InputEventKey:
+		event_str = OS.get_keycode_string(event.physical_keycode)
+	elif event is InputEventMouseButton:
+		event_str = "mouse_" + str(event.button_index)
+		
+	config.set_value("keybinds", action, event_str)
+	config.save(SETTINGS_FILE_PATH)
+	
+	
+func load_keybinds():
+	var keybinds = {}
+	var keys = config.get_section_keys("keybinds")
+	for key in keys:
+		var input_event
+		var event_str = config.get_value("keybinds", key)
+		
+		if event_str.contains("mouse_"):
+			input_event = InputEventMouseButton.new()
+			input_event.button_index = int(event_str.slit("_")[1])
+		else:
+			input_event = InputEventKey.new()
+			input_event.keycode = OS.find_keycode_from_string(event_str)
+		
+		keybinds[key] = input_event
+	return keybinds
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -50,23 +50,41 @@ var input_actions = {
 	"mute_music": "Mute Music"
 }
 
-
 func _ready() -> void:
 	
+	#this is the default video settings
 	var video_settings= ConfigHandler.load_video_settings()
-	fullscreen_mode_button.button_pressed = (video_settings.get("window_mode", "Fullscreen") == "Fullscreen")
-	crt_button.button_pressed = video_settings.get("crt_effects", true)
-	camera_shake_button.button_pressed = video_settings.get("crt_effects", true)
-	brightness_value_slider.value = video_settings.get("brightness_value", 80.0)
+	crt_button.button_pressed = video_settings.get("crt_effect", true)
+	camera_shake_button.button_pressed = video_settings.get("camera_shake",true)
+	brightness_value_slider.value = video_settings.get("brightness_value", 80.0) *100
 	
-	var audio_settings = ConfigHandler.load_audio_settings()
-	master_volume_slider.value = audio_settings.get("master_volume", 80.0) 
-	music_volume_slider.value = audio_settings.get("music_volume", 80.0) 
-	sfx_volume_slider.value = audio_settings.get("sfx_volume", 81.0)
-	
-	
-	_create_action_list()
+
+	var saved_window_mode: String = video_settings.get("window_mode",fullscreen_modes[0])
+	fullscreen_index = fullscreen_modes.find(saved_window_mode)
+	if fullscreen_index == -1:
+		fullscreen_index = 0
 	fullscreen_mode_button.text = fullscreen_modes[fullscreen_index]
+	_apply_fullscreen_mode(fullscreen_modes[fullscreen_index])
+	
+	#this is the default audio settings
+	var audio_settings = ConfigHandler.load_audio_settings()
+	master_volume_slider.value = audio_settings.get("master_volume", 80.0) * 100 
+	music_volume_slider.value = audio_settings.get("music_volume", 80.0) * 100 
+	sfx_volume_slider.value = audio_settings.get("sfx_volume", 81.0) * 100
+	
+	
+	load_keybinds_from_settings()
+	_create_action_list()
+	
+	
+
+func load_keybinds_from_settings():
+	var keybinds = ConfigHandler.load_keybinds()
+	for action in keybinds.keys():
+		InputMap.action_erase_events(action)
+		InputMap.action_add_event(action, keybinds[action])
+	
+	
 	
 #region window
 	windows = [
@@ -88,7 +106,7 @@ func show_window(windows_to_show: MarginContainer) -> void:
 	windows_to_show.show()
 
 func _create_action_list():
-	InputMap.load_from_project_settings()
+	#InputMap.load_from_project_settings()
 	for item in action_list.get_children():
 		item.queue_free()
 		
@@ -110,6 +128,7 @@ func _create_action_list():
 		#action_list.add_child(reset_keybind_button)
 		button.pressed.connect(_on_input_button_pressed.bind(button, action))
 		
+		
 func _on_input_button_pressed(button, action):
 	if !is_remaping:
 		is_remaping = true
@@ -117,7 +136,6 @@ func _on_input_button_pressed(button, action):
 		remapping_button = button
 		button.find_child("Input_Label").text = "press key to bind..."
 		
-
 func _input(event: InputEvent) -> void:
 	if is_remaping and action_to_remap != null:
 		if (
@@ -140,6 +158,7 @@ func _input(event: InputEvent) -> void:
 					
 			InputMap.action_erase_events(action_to_remap)
 			InputMap.action_add_event(action_to_remap, event)
+			ConfigHandler.save_keybinds(action_to_remap, event)
 			_update_action_list(remapping_button, event)
 			
 			is_remaping = false
@@ -190,15 +209,21 @@ func _apply_fullscreen_mode(fullscreen_modes: String) -> void:
 			"Fullscreen":
 				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+				#ConfigHandler.save_video_settings("window_mode", "Fullscreen")
+				#change window mode to fullscreen
 			
 			"Windowed":
 				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 				DisplayServer.window_set_size(Vector2i(800, 600))
+				#ConfigHandler.save_video_settings("window_mode", "Windowed")
+				#change window mode to windowed
 			
 			"Borderless":
 				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 				DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+				#ConfigHandler.save_video_settings("window_mode", "Borderless")
+				#change window mode to fullscreen boderless
 
 #region Save settings
 #save settings
@@ -211,20 +236,30 @@ func _on_camera_shake_button_toggled(toggled_on: bool) -> void:
 
 func _on_master_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
-		ConfigHandler.save_audio_settings("master_volume", master_volume_slider.value)
+		ConfigHandler.save_audio_settings("master_volume", master_volume_slider.value/100)
 
 
 func _on_music_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
-		ConfigHandler.save_audio_settings("music_volume", music_volume_slider.value)
+		ConfigHandler.save_audio_settings("music_volume", music_volume_slider.value/100)
 
 
 func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
-		ConfigHandler.save_audio_settings("sfx_volume", sfx_volume_slider.value)
+		ConfigHandler.save_audio_settings("sfx_volume", sfx_volume_slider.value/100)
 
 func _on_brightness_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
-		ConfigHandler.save_video_settings("brightness_value", brightness_value_slider.value)
+		ConfigHandler.save_video_settings("brightness_value", brightness_value_slider.value/100)
 
 #endregion
+
+
+func _on_reset_keybinds_button_pressed() -> void:
+	InputMap.load_from_project_settings()
+	for action in input_actions:
+		var events = InputMap.action_get_events(action)
+		if events.size() > 0:
+			ConfigHandler.save_keybinds(action, events[0])
+	_create_action_list()
+	

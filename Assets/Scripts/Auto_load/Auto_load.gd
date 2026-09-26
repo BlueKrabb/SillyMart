@@ -32,7 +32,9 @@ func toggle_fullscreen():
 	if fullscreen:
 		print("window mode is now fullscren")
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		ConfigHandler.save_video_settings("window_mode", "fullscreen")
 	else:
 		print("window mode is now windowed")
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 		DisplayServer.window_set_size(Vector2i(800, 600))
+		ConfigHandler.save_video_settings("window_mode", "windowed")
