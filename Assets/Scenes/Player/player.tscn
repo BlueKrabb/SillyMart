@@ -130,7 +130,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o8kuu")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_down",
 "speed": 5.0
 }, {
@@ -150,7 +150,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fupf5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_side",
 "speed": 5.0
 }, {
@@ -167,7 +167,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_23lac")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_up",
 "speed": 5.0
 }, {
@@ -187,7 +187,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_aq5fl")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_down",
 "speed": 5.0
 }, {
@@ -204,7 +204,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dsi02")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_side",
 "speed": 5.0
 }, {
@@ -218,7 +218,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lerqx")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_up",
 "speed": 5.0
 }]
@@ -271,6 +271,7 @@ metadata/_custom_type_script = "uid://0guja6ish6xg"
 [node name="Walk" type="Node" parent="StateMachine" unique_id=1271044039 node_paths=PackedStringArray("idle_state", "player") groups=["player"]]
 script = ExtResource("5_wp0h6")
 idle_state = NodePath("../Idle")
+run_speed = 150
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://0guja6ish6xg"
 

@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bbh8md2jtccth" path="res://Assets/Sprites/Ui/Slider/Slider_Grabber2.png" id="12_cevel"]
 [ext_resource type="Texture2D" uid="uid://uxknp6twxmhb" path="res://Assets/Sprites/Ui/Buttons/Input_button1.png" id="12_pu1aa"]
 [ext_resource type="Script" uid="uid://dhbtfi3sc8qvp" path="res://addons/SliderLabel/SliderLabel.gd" id="12_rgx7u"]
-[ext_resource type="PackedScene" uid="uid://b8u2xcotog0kx" path="res://Assets/Scenes/UI/Settings_menu/Input_settings/input_container.tscn" id="12_x2kum"]
 [ext_resource type="Texture2D" uid="uid://c74upiwpj6nx4" path="res://Assets/Sprites/Ui/Slider/Slider_Grabber_highlight.png" id="13_ce1s7"]
 [ext_resource type="Texture2D" uid="uid://cqerngtt8avv5" path="res://Assets/Sprites/Ui/Buttons/Input_button2.png" id="13_wmacw"]
 [ext_resource type="StyleBox" uid="uid://b76a42ebr4je2" path="res://Assets/Resource/UI/Slider.tres" id="14_mv6wn"]
@@ -70,10 +69,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -150.0
-offset_right = 200.0
-offset_bottom = 196.0
+offset_left = -275.5
+offset_top = -173.0
+offset_right = 275.5
+offset_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_1b0p2")
@@ -83,6 +82,7 @@ patch_margin_top = 18
 patch_margin_right = 16
 patch_margin_bottom = 16
 script = ExtResource("2_r3g7i")
+controller_action_items = Array[String](["move_up", "move_down", "move_right", "move_left", "interact"])
 
 [node name="Header_MarginContainer" type="MarginContainer" parent="." unique_id=731366060]
 layout_mode = 1
@@ -132,9 +132,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -225.5
+offset_left = -274.0
 offset_top = -157.0
-offset_right = 224.5
+offset_right = 273.0
 offset_bottom = 173.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -152,6 +152,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rgx7u")
 
 [node name="MarginContainer" type="MarginContainer" parent="Body_MarginContainer/HBoxContainer/Panel" unique_id=1263345305]
 layout_mode = 2
+theme_override_constants/margin_right = 20
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer" unique_id=1063012378]
 custom_minimum_size = Vector2(70, 330)
@@ -286,7 +287,49 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Controls"
+text = "Keybinds"
+horizontal_alignment = 1
+
+[node name="Controller_Button" type="TextureButton" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer" unique_id=1298131509]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+toggle_mode = true
+button_group = ExtResource("4_r3g7i")
+texture_normal = ExtResource("8_wv5td")
+texture_pressed = ExtResource("7_4cbii")
+texture_hover = ExtResource("8_wv5td")
+texture_disabled = ExtResource("8_wv5td")
+texture_focused = ExtResource("7_4cbii")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Controller_Button" unique_id=1126816535]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -10.0
+offset_right = 28.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.8666667, 0.8666667, 0.8666667, 1)
+
+[node name="Controls_Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/Controller_Button/ColorRect" unique_id=281941470]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Controller"
 horizontal_alignment = 1
 
 [node name="Windows" type="PanelContainer" parent="Body_MarginContainer/HBoxContainer" unique_id=162725328]
@@ -297,10 +340,10 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_en4qd")
 [node name="Video_MarginContainer" type="MarginContainer" parent="Body_MarginContainer/HBoxContainer/Windows" unique_id=1351874764]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 40
+theme_override_constants/margin_right = 70
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Video_MarginContainer" unique_id=1607598795]
 layout_mode = 2
@@ -468,9 +511,10 @@ metadata/_edit_initialized_ = true
 [node name="Audio_MarginContainer" type="MarginContainer" parent="Body_MarginContainer/HBoxContainer/Windows" unique_id=343416658]
 unique_name_in_owner = true
 visible = false
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 30
+theme_override_constants/margin_right = 70
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer" unique_id=2136635618]
 layout_mode = 2
@@ -503,17 +547,15 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "Master "
 
-[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer/Master_volume_VBoxContainer" unique_id=553061927]
+[node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer/Master_volume_VBoxContainer" unique_id=1704108758]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-mouse_behavior_recursive = 1
 
 [node name="Master_Slider" type="HSlider" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer/Master_volume_VBoxContainer" unique_id=398431232]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/grabber_offset = -1
 theme_override_constants/tick_offset = 9
@@ -559,7 +601,7 @@ theme_override_font_sizes/font_size = 20
 text = "Music"
 
 [node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer/Music_volume__VBoxContainer" unique_id=913398301]
-custom_minimum_size = Vector2(15, 0)
+custom_minimum_size = Vector2(11, 0)
 layout_mode = 2
 mouse_filter = 1
 mouse_behavior_recursive = 1
@@ -612,7 +654,7 @@ theme_override_font_sizes/font_size = 20
 text = "Sfx"
 
 [node name="Control" type="Control" parent="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer/Sfx_volume_VBoxContainer" unique_id=410908372]
-custom_minimum_size = Vector2(35, 0)
+custom_minimum_size = Vector2(30.46, 0)
 layout_mode = 2
 mouse_filter = 1
 mouse_behavior_recursive = 1
@@ -656,7 +698,8 @@ metadata/_edit_initialized_ = true
 
 [node name="Controls_MarginContainer" type="MarginContainer" parent="Body_MarginContainer/HBoxContainer/Windows" unique_id=1234745950]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+visible = false
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 50
@@ -668,7 +711,7 @@ size_flags_vertical = 3
 
 [node name="Controls_Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer/VBoxContainer2" unique_id=2059689952]
 layout_mode = 2
-text = "Key binds"
+text = "Keyboard Keybinds"
 label_settings = SubResource("LabelSettings_sa5cg")
 horizontal_alignment = 1
 
@@ -678,7 +721,7 @@ theme_override_constants/separation = 8
 theme_override_styles/separator = SubResource("StyleBoxLine_wmacw")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer/VBoxContainer2" unique_id=1679738797]
-custom_minimum_size = Vector2(250, 200)
+custom_minimum_size = Vector2(350, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -688,14 +731,53 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InputRemapButton" parent="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer/VBoxContainer2/ScrollContainer/Input_list_HBoxContainer" unique_id=1277156902 instance=ExtResource("12_x2kum")]
-layout_mode = 2
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer/VBoxContainer2" unique_id=708333522]
 layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Reset_Keybinds_Button" parent="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer/VBoxContainer2/VBoxContainer" unique_id=2128983336 instance=ExtResource("25_wmacw")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Controller_MarginContainer" type="MarginContainer" parent="Body_MarginContainer/HBoxContainer/Windows" unique_id=2006037744]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Controller_MarginContainer" unique_id=464911249]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Controls_Label" type="Label" parent="Body_MarginContainer/HBoxContainer/Windows/Controller_MarginContainer/VBoxContainer2" unique_id=527178749]
+layout_mode = 2
+text = "Controller Keybinds"
+label_settings = SubResource("LabelSettings_sa5cg")
+horizontal_alignment = 1
+
+[node name="Control" type="HSeparator" parent="Body_MarginContainer/HBoxContainer/Windows/Controller_MarginContainer/VBoxContainer2" unique_id=555435950]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxLine_wmacw")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Controller_MarginContainer/VBoxContainer2" unique_id=926250399]
+custom_minimum_size = Vector2(350, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Controller_Input_list" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Controller_MarginContainer/VBoxContainer2/ScrollContainer" unique_id=774118790]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Body_MarginContainer/HBoxContainer/Windows/Controller_MarginContainer/VBoxContainer2" unique_id=804416498]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="controller_Reset_Keybinds_Button" parent="Body_MarginContainer/HBoxContainer/Windows/Controller_MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1557558059 instance=ExtResource("25_wmacw")]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -713,3 +795,4 @@ layout_mode = 2
 [connection signal="drag_ended" from="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer/Music_volume__VBoxContainer/Music_Slider" to="." method="_on_music_slider_drag_ended"]
 [connection signal="drag_ended" from="Body_MarginContainer/HBoxContainer/Windows/Audio_MarginContainer/HBoxContainer/VBoxContainer/Sfx_volume_VBoxContainer/Sfx_slider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="pressed" from="Body_MarginContainer/HBoxContainer/Windows/Controls_MarginContainer/VBoxContainer2/VBoxContainer/Reset_Keybinds_Button" to="." method="_on_reset_keybinds_button_pressed"]
+[connection signal="pressed" from="Body_MarginContainer/HBoxContainer/Windows/Controller_MarginContainer/VBoxContainer2/VBoxContainer/controller_Reset_Keybinds_Button" to="." method="_on_controller_reset_keybinds_button_pressed"]

@@ -1,0 +1,57 @@
+[gd_resource type="Theme" format=3 uid="uid://2csm5nulwrbn"]
+
+[ext_resource type="Texture2D" uid="uid://uxknp6twxmhb" path="res://Assets/Sprites/Ui/Buttons/Input_button1.png" id="1_n5byu"]
+[ext_resource type="Texture2D" uid="uid://cqerngtt8avv5" path="res://Assets/Sprites/Ui/Buttons/Input_button2.png" id="2_tilsg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t645h"]
+texture = ExtResource("1_n5byu")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(1, 1, 62, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tilsg"]
+texture = ExtResource("2_tilsg")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(1, 1, 62, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pcc6m"]
+texture = ExtResource("1_n5byu")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(1, 1, 62, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wwxxv"]
+texture = ExtResource("2_tilsg")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(1, 1, 62, 14)
+
+[resource]
+default_font_size = 16
+Button/styles/disabled = SubResource("StyleBoxTexture_t645h")
+Button/styles/focus = SubResource("StyleBoxTexture_tilsg")
+Button/styles/hover = SubResource("StyleBoxTexture_tilsg")
+Button/styles/normal = SubResource("StyleBoxTexture_t645h")
+Button/styles/pressed = SubResource("StyleBoxTexture_tilsg")
+RemapButton/base_type = &"Button"
+RemapButton/colors/font_color = Color(0, 0, 0, 1)
+RemapButton/colors/font_disabled_color = Color(0, 0, 0, 1)
+RemapButton/colors/font_focus_color = Color(0, 0, 0, 1)
+RemapButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+RemapButton/colors/font_outline_color = Color(0, 0, 0, 1)
+RemapButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+RemapButton/font_sizes/font_size = 16
+RemapButton/styles/disabled = SubResource("StyleBoxTexture_pcc6m")
+RemapButton/styles/focus = SubResource("StyleBoxTexture_wwxxv")
+RemapButton/styles/hover = SubResource("StyleBoxTexture_wwxxv")
+RemapButton/styles/normal = SubResource("StyleBoxTexture_pcc6m")
+RemapButton/styles/pressed = SubResource("StyleBoxTexture_wwxxv")

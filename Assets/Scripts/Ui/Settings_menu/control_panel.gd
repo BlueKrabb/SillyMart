@@ -6,6 +6,8 @@ extends NinePatchRect
 @onready var audio_button: TextureButton = %Audio_Button
 @onready var controls_button: TextureButton = %Controls_Button
 
+
+
 #video settings
 @onready var crt_button: CheckButton = %Crt_Button
 @onready var camera_shake_button: CheckButton = %Camera_shake_Button
@@ -27,12 +29,21 @@ extends NinePatchRect
 @onready var controls_margin_container: MarginContainer = %Controls_MarginContainer
 
 #scenes
-@onready var input_button_scene = preload("res://Assets/Scenes/UI/Settings_menu/Input_settings/input_container.tscn")
+@onready var input_button_scene:PackedScene = preload("res://Assets/Scenes/UI/Settings_menu/Input_settings/input_container.tscn")
 @onready var reset_button_scene = preload("res://Assets/Scenes/UI/Settings_menu/Input_settings/reset_keybinds_button.tscn")
 
 @onready var action_list: VBoxContainer = %Input_list_HBoxContainer
 var fullscreen_modes:Array[String] = ["Fullscreen", "Windowed", "Borderless"]
 var fullscreen_index:int = 0
+
+@export var controller_action_items: Array[String]
+@onready var controller_button: TextureButton = %Controller_Button
+@onready var controller_input_list: VBoxContainer = %Controller_Input_list
+@onready var controller_reset_keybinds_button: Button = %controller_Reset_Keybinds_Button
+var REMAPBUTTON_scene = preload("uid://cmlbw4yom3d8r")
+
+
+
 #endregion
 
 var windows:Array[MarginContainer] = []
@@ -40,7 +51,11 @@ var is_remaping: bool = false
 var action_to_remap = null
 var remapping_button = null
 
-var input_actions = {
+var is_remaping_controller: bool = false
+var controller_action_to_remap:String = ""
+var controller_remapping_button:Button = null
+
+var input_actions:Dictionary = {
 	"move_up": "Move Up",
 	"move_down": "Move Down",
 	"move_left": "Move Left",
@@ -50,7 +65,14 @@ var input_actions = {
 	"mute_music": "Mute Music"
 }
 
+
+
+
 func _ready() -> void:
+	
+	_create_controller_action_list()
+	_debug_inputmap()
+	
 	
 	#this is the default video settings
 	var video_settings= ConfigHandler.load_video_settings()
@@ -77,6 +99,17 @@ func _ready() -> void:
 	_create_action_list()
 	
 	
+	
+
+func _debug_inputmap() -> void:
+	print("=== InputMap state for controller actions ===")
+	for action in controller_action_items:
+		var events := InputMap.action_get_events(action)
+		print(action, " has ", events.size(), " events:")
+		for ev in events:
+			print("    ", ev.get_class(), " -> ", ev.as_text())
+	
+
 
 func load_keybinds_from_settings():
 	var keybinds = ConfigHandler.load_keybinds()
@@ -88,11 +121,13 @@ func load_keybinds_from_settings():
 	
 #region window
 	windows = [
-	%Video_MarginContainer, %Audio_MarginContainer, %Controls_MarginContainer]
+	%Video_MarginContainer, %Audio_MarginContainer, %Controls_MarginContainer,%Controller_MarginContainer]
 
 	video_button.pressed.connect(show_window.bind(windows[0]))
 	audio_button.pressed.connect(show_window.bind(windows[1]))
 	controls_button.pressed.connect(show_window.bind(windows[2]))
+	controller_button.pressed.connect(show_window.bind(windows[3]))
+
 	
 	show_window(windows[0])
 	video_button.grab_focus()
@@ -104,6 +139,43 @@ func show_window(windows_to_show: MarginContainer) -> void:
 	for windows in windows:
 		windows.hide()
 	windows_to_show.show()
+
+
+const CONTROLLER_AXIS_LABELS: Dictionary = {
+	JoyAxis.JOY_AXIS_TRIGGER_LEFT: "LT",
+	JoyAxis.JOY_AXIS_TRIGGER_RIGHT: "RT",
+	JoyAxis.JOY_AXIS_LEFT_X: "LS X",
+	JoyAxis.JOY_AXIS_LEFT_Y: "LS Y",
+	JoyAxis.JOY_AXIS_RIGHT_X: "RS X",
+	JoyAxis.JOY_AXIS_RIGHT_Y: "RS Y",
+}
+
+const CONTROLLER_LABELS: Dictionary = {
+	JoyButton.JOY_BUTTON_A: "A",
+	JoyButton.JOY_BUTTON_B: "B",
+	JoyButton.JOY_BUTTON_X: "X",
+	JoyButton.JOY_BUTTON_Y: "Y",
+	JoyButton.JOY_BUTTON_LEFT_SHOULDER: "LB",
+	JoyButton.JOY_BUTTON_RIGHT_SHOULDER: "RB",
+	JoyButton.JOY_BUTTON_LEFT_STICK: "L3",
+	JoyButton.JOY_BUTTON_RIGHT_STICK: "R3",
+	JoyButton.JOY_BUTTON_DPAD_UP: "UP",
+	JoyButton.JOY_BUTTON_DPAD_DOWN: "DOWN",
+	JoyButton.JOY_BUTTON_DPAD_LEFT: "LEFT",
+	JoyButton.JOY_BUTTON_DPAD_RIGHT: "RIGHT",
+	JoyButton.JOY_BUTTON_START: "Start",
+	JoyButton.JOY_BUTTON_GUIDE: "Select",
+	JoyButton.JOY_BUTTON_BACK: "Back",
+}
+
+func _joypad_event_to_text(event: InputEvent) -> String:
+	if event is InputEventJoypadButton:
+		return CONTROLLER_LABELS.get(event.button_index, "Btn %d" % event.button_index)
+	if event is InputEventJoypadMotion:
+		var base: String = CONTROLLER_AXIS_LABELS.get(event.axis, "Axis %d" % event.axis)
+		return base + ("+" if event.axis_value > 0.0 else "-")
+	return "Unbound"
+
 
 func _create_action_list():
 	#InputMap.load_from_project_settings()
@@ -137,6 +209,44 @@ func _on_input_button_pressed(button, action):
 		button.find_child("Input_Label").text = "press key to bind..."
 		
 func _input(event: InputEvent) -> void:
+	
+	if is_remaping_controller and controller_action_to_remap != "":
+		if event is InputEventJoypadButton:
+			if not event.pressed:
+				return
+		elif event is InputEventJoypadMotion:
+			if abs(event.axis_value) < 0.5:
+				return
+		else:
+			return
+
+		for action in input_actions:
+			if action == controller_action_to_remap:
+				continue
+			if InputMap.action_has_event(action, event):
+				controller_remapping_button.set_conflict()
+				controller_remapping_button.grab_focus()
+				is_remaping_controller = false
+				controller_action_to_remap = ""
+				controller_remapping_button = null
+				accept_event()
+				return
+
+		for ev in InputMap.action_get_events(controller_action_to_remap):
+			if ev is InputEventJoypadButton or ev is InputEventJoypadMotion:
+				InputMap.action_erase_event(controller_action_to_remap, ev)
+		InputMap.action_add_event(controller_action_to_remap, event)
+
+		controller_remapping_button.set_bound_display(_joypad_event_to_text(event))
+		controller_remapping_button.grab_focus() 
+
+		is_remaping_controller = false
+		controller_action_to_remap = ""
+		controller_remapping_button = null
+		accept_event()
+		return
+	
+
 	if is_remaping and action_to_remap != null:
 		if (
 			event is InputEventKey ||
@@ -263,3 +373,38 @@ func _on_reset_keybinds_button_pressed() -> void:
 			ConfigHandler.save_keybinds(action, events[0])
 	_create_action_list()
 	
+func _create_controller_action_list() -> void:
+	for child in controller_input_list.get_children():
+		controller_input_list.remove_child(child)
+		child.queue_free()
+
+	for action in controller_action_items:
+		var btn := REMAPBUTTON_scene.instantiate() as RemapButton
+		btn.action = action
+		controller_input_list.add_child(btn)
+		btn.pressed.connect(_on_controller_input_button_pressed.bind(btn, action))
+
+func _on_controller_input_button_pressed(button: Button, action: String) -> void:
+	if is_remaping_controller:
+		#return
+		if controller_remapping_button and controller_remapping_button !=button:
+			controller_remapping_button.update_text()
+			controller_remapping_button = button
+			controller_action_to_remap = action
+			button.set_awaiting_input()
+			button.release_focus()
+			return
+			
+			
+			
+			
+	is_remaping_controller = true
+	controller_action_to_remap = action
+	controller_remapping_button = button
+	button.set_awaiting_input()
+	button.release_focus()
+
+
+func _on_controller_reset_keybinds_button_pressed() -> void:
+	InputMap.load_from_project_settings()
+	_create_action_list()

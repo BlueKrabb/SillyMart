@@ -11,7 +11,9 @@ config_version=5
 [application]
 
 config/name="SillyMart"
-config/features=PackedStringArray("4.6", "GL Compatibility")
+config/use_custom_user_dir=true
+config/custom_user_dir_name="sillymart"
+config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [audio]
@@ -20,9 +22,9 @@ buses/default_bus_layout="uid://c2or36hlwkay6"
 
 [autoload]
 
-Dialogic="*uid://ds2q0uclmolvu"
 AutoLoad="*uid://duk0gbiwf3h3b"
 ConfigHandler="*uid://c0kf8m6lll1a5"
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [dialogic]
 
@@ -81,7 +83,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ColorPreview/plugin.cfg", "res://addons/SliderLabel/plugin.cfg", "res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray("res://addons/ColorPreview/plugin.cfg", "res://addons/SliderLabel/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
 [file_customization]
 
